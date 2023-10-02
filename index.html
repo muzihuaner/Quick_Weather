@@ -2,110 +2,115 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>快点天气</title>
-  <meta name="description" content="快点天气提供权威的天气预报、气象预警、卫星云图、雷达图等专业服务产品">
-  <meta name="keywords" content="快点天气、天气、天气预报、气候、气象、气候、气候变化、预警">
-  <link href="https://cdnjs.loli.net/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css" rel="stylesheet" />
-  <link href="https://fonts.loli.net/css?family=Cabin" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>快点天气</title>
+<meta name="description" content="快点天气提供权威的天气预报、气象预警、卫星云图、雷达图等专业服务产品">
+<meta name="keywords" content="快点天气、天气、天气预报、气候、气象、气候、气候变化、预警">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/x-icon" />
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.loli.net" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.loli.net/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/media-query.css" />
 
 </head>
 
 <body>
-  <!-- partial:index.partial.html -->
+    <header class="header">
+        <div class="container">
+            <a href="#/current-location" class="logo">
+                <img src="./assets/images/logo.png" width="364" height="58" alt="logo" />
+            </a>
 
-  <body>
-    <div id="bg-img">
-      <div id="wrapper">
-        <h1><i class="wi wi-horizon-alt"></i>快点天气</h1>
-        <form id="weatherForm">
-          <input type="text" id="locationInput" placeholder="输入位置">
-          <button type="submit">搜索</button>
-        </form>
-        <script>
-          const form = document.getElementById('weatherForm');
-          const locationInput = document.getElementById('locationInput');
+            <div class="search-view" data-search-view>
+                <div class="search-wrapper">
+                    <input autocomplete="off" type="search" name="search" placeholder="搜索 城市 ..."
+                        class="search-field" data-search-field />
+                    <span class="m-icon leading-icon">search</span>
+                    <button class="icon-btn leading-icon has-state" aria-label="close search" data-search-toggler>
+                        <span class="m-icon">arrow_back</span>
+                    </button>
+                </div>
 
-          form.addEventListener('submit', function (event) {
-            event.preventDefault(); // 阻止表单默认提交行为
+                <div class="search-result" data-search-result>
 
-            const location = locationInput.value;
-            getmyWeatherData(location);
-          });
-        </script>
-        <!-- Location and Date -->
-        <div id="location">
-          <h2 id="currentLocation">位置</h2>
-          <h4 id="currentDate">日期</h4>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button class="icon-btn has-state" aria-label="open search" data-search-toggler>
+                    <span class="m-icon icon">search</span>
+                </button>
+                <a href="#/current-location" class="btn-primary has-state" data-current-location-btn>
+                    <span class="m-icon">my_location</span>
+                    <span id="current-location-span" class="span">定位</span>
+                </a>
+            </div>
         </div>
+    </header>
 
-        <!-- Current Weather -->
-        <div id="main-data">
-          <p id="forecast"><i class="wi"></i></p>
-          <p id="currentWeather"></p>
-        </div>
+    <main>
+        <article class="container" data-container>
+            <div class="content-left">
+                <section class="section current-weather" aria-label="current weather" data-current-weather>
+                    <div class="card card-lg current-weather-card">
+                    </div>
+                </section>
+                <section class="section forecast" aria-labelledby="forecast-label" data-5-day-forecast></section>
+            </div>
 
-        <!-- Temperature -->
-        <div id="temp">
-          <p id="currentTemp">温度🌡</p>
-          <label class="toggle">
-            <input type="checkbox">
-            <span class="slider round"></span>
-          </label>
-          <p id="high-low"></p>
-        </div>
+            <div class="content-right">
+                <section class="section highlights" aria-labelledby="highlights-label" data-highlights>
+                    <div class="card card-lg">
+                    </div>
+                </section>
+                <section class="section hourly-forecast" aria-label="hourly forecast" data-hourly-forecast>
 
-        <!-- Other weather data -->
-        <div id="parameters">
-          <ul>
-            <li>风力🌪</li>
-            <li>云☁</li>
-            <li>湿度☔</li>
-            <li>气压⚡</li>
-            <li>日出时间🌞</li>
-            <li>日落时间🌞</li>
-          </ul>
+                </section>
 
-          <!-- Icons -->
-          <ul>
-            <li><i class="wi wi-strong-wind"></i></li>
-            <li><i class="wi wi-cloudy"></i></li>
-            <li><i class="wi wi-humidity"></i></li>
-            <li><i class="wi wi-barometer"></i></li>
-          </ul>
-          <!-- API Current Data -->
-          <ul>
-            <li id="wind"></li>
-            <li id="cloud"></li>
-            <li id="humidity"></li>
-            <li id="pressure"></li>
-            <li id="sunrise"></li>
-            <li id="sunset"></li>
-          </ul>
-        
-        </div>
-        
-      </div>
+                <footer class="footer">
+                    <div class="tu">
+                        <a href="https://7timer.info/index.php?lang=zh-CN" style="text-decoration: none;color:aliceblue"><h4>晴天钟</h4></a>
+                        <img loading="lazy" src width="100%" height="auto" id="7timer">
+                        <h4>实时卫星云图（自动更新）</h4>
+                        <img loading="lazy" src="http://img.nsmc.org.cn/CLOUDIMAGE/FY4A/MTCC/FY4A_CHINA.JPG" width="100%" height="auto">
+                        <h4>日出预测（自动更新）</h4>
+                        <img loading="lazy" src="https://sunsetwx.com/sunrise/gfssunrise_world_f2.png" width="100%" height="auto">
+                        <h4>日落预测（自动更新）</h4>
+                        <img loading="lazy" src="https://sunsetwx.com/sunset/gfssunset_world_f5.png" width="100%" height="auto">
+                        </div>
+                    <p class="body-3">
+                        Copyrights 2023 欢哥科技. All Rights Reserved
+                    </p>
+                    <p class="body-3">
+                        Powered By
+                        <a href="https://openweathermap.org/api" title="Free Open Weather API" target="_blank"
+                            rel="noopener">
+                            <img src="./assets/images/openweather.png" width="150" height="30" loading="lazy"
+                                alt="OpenWeather" srcset="" />
+                        </a>
+                    </p>
+                </footer>
+            </div>
 
-    </div>
-    <div class="tu">
-      <a href="https://7timer.info/index.php?lang=zh-CN" style="text-decoration: none;color:aliceblue"><h4>晴天钟</h4></a>
-      <img loading="lazy" src="" width="100%" height="auto" id="7timer">
-   
-      <h4>实时卫星云图（自动更新）</h4>
-      <img loading="lazy" src="http://img.nsmc.org.cn/CLOUDIMAGE/FY4A/MTCC/FY4A_CHINA.JPG" width="100%" height="auto">
-      <h4>日出预测（自动更新）</h4>
-      <img loading="lazy" src="https://sunsetwx.com/sunrise/gfssunrise_world_f2.png" width="100%" height="auto">
-      <h4>日落预测（自动更新）</h4>
-      <img loading="lazy" src="https://sunsetwx.com/sunset/gfssunset_world_f5.png" width="100%" height="auto">
-   
-    </div>
-  </body>
-  <!-- partial -->
-  <script src="./script.js"></script>
+            <div class="loading" data-loading>
 
+            </div>
+        </article>
+    </main>
+
+    <section class="error-content" data-error-content>
+        <h2 class="heading">404</h2>
+        <p class="body-1">Page not found!</p>
+        <a href="#/current-location" class="btn-primary">
+            <span class="span">返回首页</span>
+        </a>
+    </section>
+
+    <script type="module" src="./assets/js/app.js"></script>
+    <script type="module" src="./assets/js/route.js"></script>
 </body>
 
 </html>
