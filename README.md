@@ -33,3 +33,9 @@ Weatherio harnesses the power of asynchronous programming, using the fetch metho
 ### 🗺️ Geolocation Wonders
 
 Thanks to the Geolocation API, Weatherio accurately pinpoints your current location after you grant access. Your comfort and ease are our top priorities, ensuring you receive weather information relevant to your location.
+
+## 项目参考
+https://github.com/mohamed0690/weatherio
+http://img.nsmc.org.cn/CLOUDIMAGE/FY4A/MTCC/FY4A_CHINA.JPG
+https://sunsetwx.com/sunrise/gfssunrise_world_f2.png
+https://sunsetwx.com/sunset/gfssunset_world_f5.png
